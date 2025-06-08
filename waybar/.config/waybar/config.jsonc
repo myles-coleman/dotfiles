@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "battery", "clock"],
+  "modules-right": ["custom/ipv4", "pulseaudio", "battery", "clock"],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -22,18 +22,30 @@
     "format-icons": ["", "", "", "", ""],
     "tooltip-format": "{time}"
   },
+
+
+  "custom/ipv4": {
+    "format": "<span size='13000' foreground='#f5e0dc'>󰤭  </span>{}",
+    "exec": "~/.config/waybar/scripts/get-ipv4.sh",
+    "interval": 30,
+    "tooltip": true
+  },
+
   "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+    "interface": "enp5s0",
+    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span>Connected",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "tooltip-format-wifi": "Signal Strength: {signalStrength}%",
+    "tooltip-format-ethernet": "Interface: enp5s0\nIP: {ipaddr}",
+    "on-click": "nm-connection-editor"
   },
   "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
+      "format": "<span size='13000' foreground='#89b4fa'>{icon} </span> {volume}%",
+      "format-muted": "<span size='13000' foreground='#89b4fa'>󰝟 </span> Muted",
       "format-icons": {
-          "default": ["", "", " "]
+          "default": ["󰕿", "󰖀", "󰕾"]
       },
       "on-click": "pavucontrol"
   }
