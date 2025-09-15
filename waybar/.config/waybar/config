@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "idle_inhibitor", "pulseaudio", "backlight", "network", "custom/updates"],
+    "modules-left": ["hyprland/workspaces", "idle_inhibitor", "custom/kvm", "pulseaudio", "backlight", "network", "custom/updates"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["hyprland/submap", "hyprland/language", "cpu", "memory", "temperature", "battery", "tray", "clock"],
     // Modules configuration
@@ -191,5 +191,18 @@
         },
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns 'Source Code Pro' --color-semver-updates F15D22,FFCE51,73C48F,48B9C7,88807C"
+    },
+    "custom/kvm": {
+        "format": "{icon}",
+        "format-icons": {
+            "inactive": "󰍹",
+            "active": "󰕧"
+        },
+        "tooltip-format": "KVM: {}",
+        "interval": 2,
+        "exec": "if pgrep -f 'mpv.*kvm-input' > /dev/null; then echo '{\"text\": \"Active\", \"class\": \"active\", \"alt\": \"active\"}'; else echo '{\"text\": \"Inactive\", \"class\": \"inactive\", \"alt\": \"inactive\"}'; fi",
+        "return-type": "json",
+        "on-click": "/home/bee/nixos/kvm-switch.sh",
+        "on-click-right": "/home/bee/nixos/kvm-escape.sh"
     }
 }

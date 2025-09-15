@@ -61,6 +61,23 @@
   border-left: 1px solid @base00;
 }
 
+#custom-kvm {
+  margin: 4px 2px;
+  padding: 0 8px;
+  border-radius: 4px;
+  background-color: @base02;
+  color: @base04;
+}
+
+#custom-kvm.active {
+  background-color: @base0B;
+  color: @base00;
+}
+
+#custom-kvm:hover {
+  background-color: @base03;
+}
+
 #tray *:first-child {
   border-left: none;
 }
