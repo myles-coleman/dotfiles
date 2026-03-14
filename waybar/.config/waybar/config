@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "idle_inhibitor", "custom/kvm", "pulseaudio", "backlight", "network", "custom/updates"],
+    "modules-left": ["hyprland/workspaces", "custom/kvm", "pulseaudio", "backlight", "network", "custom/updates"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["hyprland/submap", "hyprland/language", "cpu", "memory", "temperature", "battery", "tray", "clock"],
     // Modules configuration
@@ -80,13 +80,6 @@
         },
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
     },
     "tray": {
         // "icon-size": 21,
@@ -202,7 +195,7 @@
         "interval": 2,
         "exec": "if pgrep -f 'mpv.*kvm-input' > /dev/null; then echo '{\"text\": \"Active\", \"class\": \"active\", \"alt\": \"active\"}'; else echo '{\"text\": \"Inactive\", \"class\": \"inactive\", \"alt\": \"inactive\"}'; fi",
         "return-type": "json",
-        "on-click": "/home/bee/nixos/kvm-switch.sh",
-        "on-click-right": "/home/bee/nixos/kvm-escape.sh"
+        "on-click": "/home/bee/dotfiles/waybar/.config/waybar/kvm-switch.sh"
+        // "on-click-right": "/home/bee/nixos/kvm-escape.sh"
     }
 }
